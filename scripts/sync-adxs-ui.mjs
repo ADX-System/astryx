@@ -77,10 +77,10 @@ export default ${JSON.stringify({
       {type: 'prose', text: `부품 ${ledger.length}개 — ` + byStatus.map(([l, n]) => `${l} ${n}`).join(' · ') + '. 단계는 조사 → 분해됨 → 조립됨 → 등록됨 → 쓰는 중이고, 대장은 `ui-ledger` CLI · API 로만 고친다.'},
     ]},
     {id: 'components', title: '부품', content: [
-      {type: 'table', headers: ['부품', '단계', '출처', '라이선스', '약관 확인', '쓰는 곳'],
+      {type: 'table', headers: ['부품', '단계', '출처', '라이선스', '약관 확인', '쓰는 곳', '메모'],
        rows: ledger.map(c => [c.name, STATUS[c.status] ?? c.status,
          cell(c.sources.map(s => s.product).join(', ')), cell(c.sources.map(s => s.license).join(', ')),
-         cell(c.sources.map(s => TERMS[s.terms_result] ?? s.terms_result).join(', ')), String(c.usage.length)])},
+         cell(c.sources.map(s => TERMS[s.terms_result] ?? s.terms_result).join(', ')), String(c.usage.length), cell(c.note)])},
     ]},
   ],
 }, null, 2)};
