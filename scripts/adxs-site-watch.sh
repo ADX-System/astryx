@@ -22,6 +22,12 @@ fork_old=$(git -C "$FORK" rev-parse HEAD); ui_old=$(git -C "$UI" rev-parse HEAD)
 git -C "$FORK" checkout -q --detach "$fork_new"
 git -C "$UI" checkout -q --detach "$ui_new"
 if [[ "$ui_old" != "$ui_new" ]] && ! git -C "$UI" diff --quiet "$ui_old" "$ui_new" -- react/package-lock.json; then (cd "$UI/react" && npm ci --silent); fi
+# the ledger API (systemd ui-ledger.service) runs from this checkout: new code takes effect only after a restart
+if [[ "$ui_old" != "$ui_new" ]] && ! git -C "$UI" diff --quiet "$ui_old" "$ui_new" -- ledger; then
+  (cd "$UI/ledger" && uv sync -q) && systemctl --user restart ui-ledger.service
+  for i in $(seq 1 30); do curl -sf -o /dev/null "$LEDGER/health" && break; sleep 1; done
+  ledger_new=$(curl -sf "$LEDGER/export" | sha256sum | cut -c1-16); key="$fork_new $ui_new $ledger_new"
+fi
 full=""
 if [[ "$fork_old" != "$fork_new" ]] && ! git -C "$FORK" diff --quiet "$fork_old" "$fork_new" -- pnpm-lock.yaml packages; then full="--full"; fi
 ADXS_UI="$UI/react" bash "$FORK/scripts/adxs-site-update.sh" $full
