@@ -19,8 +19,8 @@ key="$fork_new $ui_new $ledger_new"
 
 echo "$(date -Is) change: fork ${fork_new:0:8} · adxs-ui ${ui_new:0:8} · ledger $ledger_new"
 fork_old=$(git -C "$FORK" rev-parse HEAD); ui_old=$(git -C "$UI" rev-parse HEAD)
-git -C "$FORK" checkout -q --detach "$fork_new"
-git -C "$UI" checkout -q --detach "$ui_new"
+git -C "$FORK" checkout -q -f --detach "$fork_new"   # site-only checkout: the build rewrites pnpm-lock.yaml, nobody edits it by hand
+git -C "$UI" checkout -q -f --detach "$ui_new"
 if [[ "$ui_old" != "$ui_new" ]] && ! git -C "$UI" diff --quiet "$ui_old" "$ui_new" -- react/package-lock.json; then (cd "$UI/react" && npm ci --silent); fi
 # the ledger API (systemd ui-ledger.service) runs from this checkout: new code takes effect only after a restart
 if [[ "$ui_old" != "$ui_new" ]] && ! git -C "$UI" diff --quiet "$ui_old" "$ui_new" -- ledger; then
