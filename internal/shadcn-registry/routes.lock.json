@@ -2,6 +2,221 @@
   "version": 1,
   "items": [
     {
+      "name": "component-adxs-ui-advisor-list",
+      "path": "components/adxs-ui/advisor-list",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-agent-notice",
+      "path": "components/adxs-ui/agent-notice",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-agent-text",
+      "path": "components/adxs-ui/agent-text",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-agent-turn",
+      "path": "components/adxs-ui/agent-turn",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-composer",
+      "path": "components/adxs-ui/composer",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-conversation-layout",
+      "path": "components/adxs-ui/conversation-layout",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-error-note",
+      "path": "components/adxs-ui/error-note",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-facts",
+      "path": "components/adxs-ui/facts",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-field-list",
+      "path": "components/adxs-ui/field-list",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-initial",
+      "path": "components/adxs-ui/initial",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-ledger",
+      "path": "components/adxs-ui/ledger",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-lines",
+      "path": "components/adxs-ui/lines",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-link-row",
+      "path": "components/adxs-ui/link-row",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-link-tabs",
+      "path": "components/adxs-ui/link-tabs",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-logo",
+      "path": "components/adxs-ui/logo",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-machine-card",
+      "path": "components/adxs-ui/machine-card",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-machine-grid",
+      "path": "components/adxs-ui/machine-grid",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-output-list",
+      "path": "components/adxs-ui/output-list",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-owner-badge",
+      "path": "components/adxs-ui/owner-badge",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-page",
+      "path": "components/adxs-ui/page",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-page-head",
+      "path": "components/adxs-ui/page-head",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-page-with-aside",
+      "path": "components/adxs-ui/page-with-aside",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-panes",
+      "path": "components/adxs-ui/panes",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-preview-list",
+      "path": "components/adxs-ui/preview-list",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-rail",
+      "path": "components/adxs-ui/rail",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-result-row",
+      "path": "components/adxs-ui/result-row",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-sample-table",
+      "path": "components/adxs-ui/sample-table",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-schema-graph",
+      "path": "components/adxs-ui/schema-graph",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-seal",
+      "path": "components/adxs-ui/seal",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-section-menu",
+      "path": "components/adxs-ui/section-menu",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-service-list",
+      "path": "components/adxs-ui/service-list",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-space-header",
+      "path": "components/adxs-ui/space-header",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-sql-editor",
+      "path": "components/adxs-ui/sql-editor",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-stat-strip",
+      "path": "components/adxs-ui/stat-strip",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-status-bar",
+      "path": "components/adxs-ui/status-bar",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-status-text",
+      "path": "components/adxs-ui/status-text",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-step-row",
+      "path": "components/adxs-ui/step-row",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-tag",
+      "path": "components/adxs-ui/tag",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-tile-grid",
+      "path": "components/adxs-ui/tile-grid",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-token-panel",
+      "path": "components/adxs-ui/token-panel",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-tree-nav",
+      "path": "components/adxs-ui/tree-nav",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-user-turn",
+      "path": "components/adxs-ui/user-turn",
+      "aliases": []
+    },
+    {
+      "name": "component-adxs-ui-workbench",
+      "path": "components/adxs-ui/workbench",
+      "aliases": []
+    },
+    {
       "name": "component-alert-dialog",
       "path": "components/alert-dialog",
       "aliases": []

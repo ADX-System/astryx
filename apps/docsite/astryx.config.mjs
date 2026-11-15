@@ -12,5 +12,6 @@ export default {
     '@astryxdesign/charts',
     '@astryxdesign/richtext',
     '@astryxdesign/vega',
+    '@adxs/ui', // ADX-System fork: our components (scripts/sync-adxs-ui.mjs)
   ],
 };

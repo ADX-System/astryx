@@ -109,3 +109,6 @@ apps/storybook/.storybook/lab-readiness/
 # PR browser accessibility runner output (pnpm test:a11y-contract:pr)
 /pr-a11y-evidence/
 /pr-a11y-output/
+
+# ADX-System fork: generated snapshot of adxs-ui (scripts/sync-adxs-ui.mjs)
+packages/adxs-ui/
