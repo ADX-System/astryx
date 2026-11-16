@@ -26,10 +26,11 @@ import {
   registerPrettierFormatter,
   type FormatFailureHandler,
 } from './formatCode';
+import {withBasePath} from '../../lib/basePath.mjs';
 
 // Self-host Monaco from public/monaco/vs — corpnet blocks the default CDN.
 if (typeof window !== 'undefined') {
-  loader.config({paths: {vs: '/monaco/vs'}});
+  loader.config({paths: {vs: withBasePath('/monaco/vs')}});
 }
 
 /** Monaco instance type — the full runtime object passed to onMount. */
@@ -109,7 +110,7 @@ export function configureMonaco(
   );
 
   // Load real type definitions from the pre-built JSON bundle
-  fetch('/playground-types.json')
+  fetch(withBasePath('/playground-types.json'))
     .then(r => r.json())
     .then((packages: Record<string, Record<string, string>>) => {
       const reactFiles = packages['react'] ?? {};

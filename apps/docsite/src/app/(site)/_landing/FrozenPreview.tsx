@@ -16,11 +16,12 @@
 import {useEffect, useRef, useState, type CSSProperties} from 'react';
 import {LANDING_PREVIEWS} from '@/generated/landingPreviews';
 import styles from './FrozenPreview.module.css';
+import {withBasePath} from '../../../lib/basePath.mjs';
 
 // A client-side navigation to the homepage has no server HTML. The generate
 // step writes the same markup to this file for that case.
 // SYNC: CLIENT_NAVIGATION_URL in scripts/generate-landing-template-previews.mjs
-const CLIENT_NAVIGATION_URL = '/landing-previews.json';
+const CLIENT_NAVIGATION_URL = withBasePath('/landing-previews.json');
 
 let clientNavigationPreviews: Promise<Record<string, string>> | null = null;
 

@@ -1,5 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
+import {withBasePath} from '../../lib/basePath.mjs';
 /**
  * @file previewChannel.ts
  * @input Playground side: the preview iframe's window plus its `load` and the
@@ -75,7 +76,7 @@ export const PREVIEW_CONNECT = 'astryx-preview-connect';
 /** Preview -> playground, on the window: "I am the document you navigated to". */
 export const PREVIEW_HELLO = 'astryx-preview-hello';
 
-const PREVIEW_PATH = '/playground/preview';
+const PREVIEW_PATH = withBasePath('/playground/preview');
 const NONCE_PARAM = 'nonce';
 
 /** A fresh, unguessable nonce for one preview document generation. */

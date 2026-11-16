@@ -18,10 +18,10 @@
 
 import type {Metadata} from 'next';
 import {SITE_NAME} from './siteConfig';
+import {withBasePath} from './basePath.mjs';
 
 /** Branded launch banner that matches the root layout + blog fallback card. */
-const DEFAULT_OG_IMAGE =
-  '/images/Astryx-Banner.png';
+const DEFAULT_OG_IMAGE = withBasePath('/images/Astryx-Banner.png');
 
 export interface PageMetadataInput {
   /** Plain page title; rendered as "<title> · Astryx" via the root template. */

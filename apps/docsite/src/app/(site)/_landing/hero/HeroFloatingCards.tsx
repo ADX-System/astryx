@@ -27,11 +27,12 @@ import {RadioList, RadioListItem} from '@astryxdesign/core/RadioList';
 import {Avatar} from '@astryxdesign/core/Avatar';
 import {AspectRatio} from '@astryxdesign/core/AspectRatio';
 import type {HeroThemeContent} from './heroThemeContent';
+import {withBasePath} from '../../../../lib/basePath.mjs';
 
 // One recurring member across every theme slide (the per-theme `member` copy is
 // intentionally not used here).
 const REWARD_MEMBER_NAME = 'Ami Pena';
-const REWARD_MEMBER_AVATAR = '/landing/hero/avatar-ami-pena.webp';
+const REWARD_MEMBER_AVATAR = withBasePath('/landing/hero/avatar-ami-pena.webp');
 
 const styles = stylex.create({
   // Desktop overlap stage: a centered 1200px box (shared with the aurora blobs)

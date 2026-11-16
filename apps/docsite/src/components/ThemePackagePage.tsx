@@ -42,6 +42,7 @@ import {
   ThemeExplorerSidebarContent,
   ThemeExplorerSidebarSurface,
 } from './ThemeExplorerLayout';
+import {withBasePath} from '../lib/basePath.mjs';
 
 // Per-theme picker banners are self-hosted under the docsite's /public/images
 // dir (same location as the showcase product photos).
@@ -191,48 +192,15 @@ const styles = stylex.create({
   // art-directed for the small 120px-tall picker card.
   // background-size:cover so each image always fills the card
   // regardless of the source's intrinsic dimensions.
-  surfaceButter: {
+  // The banner URL is passed in (with the site's path prefix) rather than
+  // written into the static rule, so the site can be served under a prefix.
+  surfaceImage: (backgroundImage: string) => ({
     backgroundColor: 'transparent',
-    backgroundImage: `url(/images/theme-butter-picker.png)`,
+    backgroundImage,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-  },
-  surfaceGothic: {
-    backgroundColor: 'transparent',
-    backgroundImage: `url(/images/theme-gothic-picker.png)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  },
-  surfaceY2k: {
-    backgroundColor: 'transparent',
-    backgroundImage: `url(/images/theme-y2k-picker.png)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  },
-  surfaceStone: {
-    backgroundColor: 'transparent',
-    backgroundImage: `url(/images/theme-stone-picker.png)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  },
-  surfaceNeutral: {
-    backgroundColor: 'transparent',
-    backgroundImage: `url(/images/theme-neutral-picker.png)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  },
-  surfaceMatcha: {
-    backgroundColor: 'transparent',
-    backgroundImage: `url(/images/theme-matcha-picker.png)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  },
+  }),
   // Per-theme wordmark color override. Most image-backed cards use
   // --color-accent for the wordmark so the brand signature reads
   // as the dominant text element on top of the photo backdrop
@@ -301,34 +269,33 @@ const styles = stylex.create({
 // color (most use labelAccent so the wordmark reads as a brand
 // signature on top of the photo). Adding artwork for a new theme
 // is a two-step addition: add a theme-<slug>-picker.png banner under
-// /public/images + add a `surface<Name>` rule into the
-// styles block above, then reference both here.
+// /public/images + add its path here as `surface`.
 const PICKER_OVERRIDES: Record<
   string,
-  {surface: StyleXStyles; label?: StyleXStyles}
+  {surface: string; label?: StyleXStyles}
 > = {
   '@astryxdesign/theme-butter': {
-    surface: styles.surfaceButter,
+    surface: '/images/theme-butter-picker.png',
     label: styles.labelAccent,
   },
   '@astryxdesign/theme-gothic': {
-    surface: styles.surfaceGothic,
+    surface: '/images/theme-gothic-picker.png',
     label: styles.labelAccent,
   },
   '@astryxdesign/theme-y2k': {
-    surface: styles.surfaceY2k,
+    surface: '/images/theme-y2k-picker.png',
     label: styles.labelAccent,
   },
   '@astryxdesign/theme-stone': {
-    surface: styles.surfaceStone,
+    surface: '/images/theme-stone-picker.png',
     label: styles.labelAccent,
   },
   '@astryxdesign/theme-neutral': {
-    surface: styles.surfaceNeutral,
+    surface: '/images/theme-neutral-picker.png',
     label: styles.labelAccent,
   },
   '@astryxdesign/theme-matcha': {
-    surface: styles.surfaceMatcha,
+    surface: '/images/theme-matcha-picker.png',
     label: styles.labelAccent,
   },
 };
@@ -619,7 +586,10 @@ export function ThemePackagePage({
                           <div
                             {...stylex.props(
                               styles.themedSurface,
-                              override?.surface ?? false,
+                              override != null &&
+                                styles.surfaceImage(
+                                  `url(${withBasePath(override.surface)})`,
+                                ),
                             )}>
                             <Text
                               type="display-3"
@@ -731,7 +701,10 @@ export function ThemePackagePage({
                           <div
                             {...stylex.props(
                               styles.themedSurface,
-                              override?.surface ?? false,
+                              override != null &&
+                                styles.surfaceImage(
+                                  `url(${withBasePath(override.surface)})`,
+                                ),
                             )}>
                             <Text
                               type="display-3"

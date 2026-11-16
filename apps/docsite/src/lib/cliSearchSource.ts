@@ -14,6 +14,7 @@
 import type {SearchSource, SearchableItem} from '@astryxdesign/core/Typeahead';
 import type {SiteSearchResult} from './cliSearchTypes';
 import {runningSearchWarmup} from './searchWarmup';
+import {withBasePath} from './basePath.mjs';
 
 export interface CliSearchItem extends SearchableItem<SiteSearchResult> {
   id: string;
@@ -152,7 +153,7 @@ export function createCliSearchSource(
           });
         });
         const response = await sendQuery(
-          `/api/search?q=${encodeURIComponent(query)}`,
+          withBasePath(`/api/search?q=${encodeURIComponent(query)}`),
           controller.signal,
         );
         if (!response.ok) {

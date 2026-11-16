@@ -40,6 +40,7 @@ import {
 import type * as TS from 'typescript';
 import NextLink from 'next/link';
 import {LinkProvider} from '@astryxdesign/core/Link';
+import {withBasePath} from '../../../lib/basePath.mjs';
 
 // Next's client router mutates history, which an opaque-origin document cannot
 // do for another path. Native links keep fragment navigation usable and let
@@ -149,7 +150,7 @@ export default function PreviewPage() {
   // (this iframe has no AMD loader, so there's no define() conflict).
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = '/vendor/typescript.js';
+    script.src = withBasePath('/vendor/typescript.js');
     const fail = () => setCompilerError('TypeScript compiler failed to load');
     script.onload = () => {
       const w = window as unknown as {ts?: typeof TS};

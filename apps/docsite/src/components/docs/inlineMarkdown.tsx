@@ -16,14 +16,16 @@ import {Code} from '@astryxdesign/core/CodeBlock';
 import {InlineCode} from '../InlineCode';
 import {proseLinkStyles} from '../proseLink';
 import {tokenizeInline, type InlineToken} from './inlineTokens';
+import {withBasePath} from '../../lib/basePath.mjs';
 
 type LinkToken = Extract<InlineToken, {type: 'link'}>;
 
 function renderLink(token: LinkToken): ReactNode {
   const isExternal = /^https?:\/\//.test(token.href);
   return (
+    // A plain anchor, so a root-relative href gets the site's path prefix here.
     <a
-      href={token.href}
+      href={isExternal ? token.href : withBasePath(token.href)}
       rel={isExternal ? 'noreferrer' : undefined}
       target={isExternal ? '_blank' : undefined}
       {...stylex.props(

@@ -62,6 +62,7 @@ import {
   X_URL,
 } from '../../../constants';
 import {layout} from '../../../layout.stylex';
+import {withBasePath} from '../../../lib/basePath.mjs';
 
 const WIKI_BASE = `${GITHUB_REPO}/wiki`;
 
@@ -596,7 +597,7 @@ const START_HERE: ReadonlyArray<StartHerePath> = [
     href: `${GITHUB_REPO}/issues/new?template=bug.yml`,
     effort: '~2 hours',
     image: {
-      src: '/feature-bug.png',
+      src: withBasePath('/feature-bug.png'),
       alt: 'Bug report illustration with issue tracker and code snippet',
     },
   },
@@ -607,7 +608,7 @@ const START_HERE: ReadonlyArray<StartHerePath> = [
     href: `${GITHUB_REPO}/issues/new/choose`,
     effort: '~30 min',
     image: {
-      src: '/feature-docs.png',
+      src: withBasePath('/feature-docs.png'),
       alt: 'Docs page preview showing the Astryx documentation site',
     },
   },

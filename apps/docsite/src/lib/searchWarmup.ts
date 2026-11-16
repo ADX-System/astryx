@@ -1,5 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
+import {withBasePath} from './basePath.mjs';
 /**
  * @file Gets the site's search ready before the first keystroke.
  * @input A moment the reader may be about to search: the page went idle after
@@ -26,7 +27,7 @@
  */
 
 /** The request that loads the search server without running a query. */
-export const SEARCH_WARMUP_URL = '/api/search?warm=1';
+export const SEARCH_WARMUP_URL = withBasePath('/api/search?warm=1');
 
 /**
  * How long a warm-up keeps counting: shorter than the time an idle server is
