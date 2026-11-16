@@ -18,6 +18,7 @@ import {
 import {useThemeMode} from '../../providers';
 import templateRows from './landingTemplateRows.json';
 import {previewColorModeFragment} from './templatePreviewColorMode';
+import {withBasePath} from '../../../lib/basePath.mjs';
 
 // A representative set of the real page templates (storefront, IDE, payment,
 // login, settings, AI chat, product detail). Grouped into rows; the middle row
@@ -28,7 +29,7 @@ import {previewColorModeFragment} from './templatePreviewColorMode';
 // the build renders from the same template: markup and styles, no script.
 const TEMPLATE_ROWS: string[][] = templateRows;
 
-const PREVIEW_DIRECTORY = '/landing/template-previews';
+const PREVIEW_DIRECTORY = withBasePath('/landing/template-previews');
 
 // On small screens the rows flow into a single 3-column grid; 7 templates would
 // leave a lone 7th tile, so this one is dropped there to keep a clean 3 + 3.

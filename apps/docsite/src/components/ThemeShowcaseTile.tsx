@@ -30,6 +30,7 @@ import {
 import {Heading, Text} from '@astryxdesign/core/Text';
 import {TextInput} from '@astryxdesign/core/TextInput';
 import {Badge} from '@astryxdesign/core/Badge';
+import {withBasePath} from '../lib/basePath.mjs';
 
 // Below 800px viewport, the tile's left card + right column stack
 // vertically (instead of side-by-side). The 2-column tile layout
@@ -60,7 +61,9 @@ const THEME_IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'webp'] as const;
 // `@astryxdesign/theme-stone` → ['/theme-stone-preview.png', '/theme-stone-preview.jpg', …]
 function themeImageCandidates(themeName: string): ReadonlyArray<string> {
   const slug = themeName.replace('@astryxdesign/theme-', '');
-  return THEME_IMAGE_EXTENSIONS.map(ext => `/theme-${slug}-preview.${ext}`);
+  return THEME_IMAGE_EXTENSIONS.map(ext =>
+    withBasePath(`/theme-${slug}-preview.${ext}`),
+  );
 }
 
 // Row 1 — Brand surface set. The 4 tokens that together define the

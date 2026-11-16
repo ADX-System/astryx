@@ -17,6 +17,7 @@ import {
 } from '@astryxdesign/core/AppShell';
 import type {ThemeShowcaseProps} from '../../../../../../packages/cli/assets/templates/pages/theme-showcase/page';
 import {getThemeShowcaseContent} from '../../../components/themeShowcaseContent';
+import {withBasePath} from '../../../lib/basePath.mjs';
 
 // Butter's bespoke showcase content (breakfast products + inventory), the
 // same source of truth the /themes page feeds ThemeShowcaseStore.
@@ -26,12 +27,12 @@ import {getThemeShowcaseContent} from '../../../components/themeShowcaseContent'
 const butterContent = {
   ...getThemeShowcaseContent('butter'),
   images: {
-    watch: '/landing/themes/butter-watch.webp',
-    headphones: '/landing/themes/butter-headphones.webp',
-    backpack: '/landing/themes/butter-backpack.webp',
-    wallet: '/landing/themes/butter-wallet.webp',
-    tumbler: '/landing/themes/butter-tumbler.webp',
-    throw_: '/landing/themes/butter-throw.webp',
+    watch: withBasePath('/landing/themes/butter-watch.webp'),
+    headphones: withBasePath('/landing/themes/butter-headphones.webp'),
+    backpack: withBasePath('/landing/themes/butter-backpack.webp'),
+    wallet: withBasePath('/landing/themes/butter-wallet.webp'),
+    tumbler: withBasePath('/landing/themes/butter-tumbler.webp'),
+    throw_: withBasePath('/landing/themes/butter-throw.webp'),
   },
 };
 

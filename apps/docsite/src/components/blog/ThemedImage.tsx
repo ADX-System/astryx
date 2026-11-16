@@ -23,6 +23,7 @@ import {useState} from 'react';
 import * as stylex from '@stylexjs/stylex';
 import {useThemeMode} from '../../app/providers';
 import {blogDarkImages, blogImageSizes} from '../../generated/blogRegistry';
+import {withBasePath} from '../../lib/basePath.mjs';
 
 const styles = stylex.create({
   image: {
@@ -59,7 +60,9 @@ const RETINA_SRC = /@2x(\.dark)?\.[a-zA-Z0-9]+$/;
  * sibling takes the light one's width so the two never shift on toggle.
  */
 export function displayWidthFor(src: string): number | undefined {
-  if (!RETINA_SRC.test(src)) return undefined;
+  if (!RETINA_SRC.test(src)) {
+    return undefined;
+  }
   const size = blogImageSizes[src];
   return size ? Math.round(size.width / 2) : undefined;
 }
@@ -78,7 +81,12 @@ export function ThemedImage({lightSrc, darkSrc, alt}: ThemedImageProps) {
   if (light == null || dark == null || light === dark) {
     const only = (light ?? dark) as string;
     return (
-      <img src={only} alt={alt} width={width} {...stylex.props(styles.image)} />
+      <img
+        src={withBasePath(only)}
+        alt={alt}
+        width={width}
+        {...stylex.props(styles.image)}
+      />
     );
   }
 
@@ -89,7 +97,7 @@ export function ThemedImage({lightSrc, darkSrc, alt}: ThemedImageProps) {
     const src = failed === wanted ? other : wanted;
     return (
       <img
-        src={src}
+        src={withBasePath(src)}
         alt={alt}
         width={width}
         onError={() => setFailed(wanted)}
@@ -101,9 +109,12 @@ export function ThemedImage({lightSrc, darkSrc, alt}: ThemedImageProps) {
   // First paint / 'system': let the browser choose from the OS scheme.
   return (
     <picture>
-      <source srcSet={dark} media="(prefers-color-scheme: dark)" />
+      <source
+        srcSet={withBasePath(dark)}
+        media="(prefers-color-scheme: dark)"
+      />
       <img
-        src={light}
+        src={withBasePath(light)}
         alt={alt}
         width={width}
         {...stylex.props(styles.image)}

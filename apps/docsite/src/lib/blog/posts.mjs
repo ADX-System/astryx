@@ -27,6 +27,7 @@
 
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import {withBasePath} from '../basePath.mjs';
 
 /**
  * The small, stable set of editorial post types used for primary filtering.
@@ -349,7 +350,7 @@ export function validatePostFrontmatter(slug, data) {
     tags: data.tags,
     updatedAt: data.updatedAt ?? null,
     draft: data.draft === true,
-    coverImage: data.coverImage ?? null,
+    coverImage: data.coverImage == null ? null : withBasePath(data.coverImage),
     coverAlt: data.coverAlt ?? null,
     releasePackage: data.releasePackage ?? null,
     relatedDocs: data.relatedDocs ?? null,

@@ -1,3 +1,5 @@
+
+import {withBasePath} from './basePath.mjs';
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
 /**
@@ -22,5 +24,5 @@ export const OPTIMIZED_IMAGE_QUALITY = 75;
  * @returns {string}
  */
 export function optimizedImageUrl(path, width) {
-  return `/_next/image?url=${encodeURIComponent(path)}&w=${width}&q=${OPTIMIZED_IMAGE_QUALITY}`;
+  return `${withBasePath('/_next/image')}?url=${encodeURIComponent(withBasePath(path))}&w=${width}&q=${OPTIMIZED_IMAGE_QUALITY}`;
 }

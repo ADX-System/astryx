@@ -57,6 +57,13 @@ const stagesStaticApps =
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Served under a path prefix when NEXT_PUBLIC_BASE_PATH is set (the ADX-System
+  // site lives at /adxs-ui beside another app on the same origin). Link, router,
+  // redirect() and the route rules below take it on; files `public` serves and
+  // plain browser requests go through withBasePath (src/lib/basePath.mjs).
+  ...(process.env.NEXT_PUBLIC_BASE_PATH
+    ? {basePath: process.env.NEXT_PUBLIC_BASE_PATH}
+    : {}),
   cacheComponents: true,
   // The custom Webpack hook below disables Next's default build worker. The
   // canary docsite compiles the live workspace, so keep that compilation in a

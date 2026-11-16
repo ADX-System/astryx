@@ -13,6 +13,7 @@ import {spacingVars} from '@astryxdesign/core/theme/tokens.stylex';
 import {AstryxLogo} from '../../../components/logos';
 import {components} from '../../../generated/componentRegistry';
 import {layout} from '../../../layout.stylex';
+import {withBasePath} from '../../../lib/basePath.mjs';
 
 // Public core component count, rounded down to the nearest 10 for marketing
 // copy. Sourced from the generated registry so it stays accurate as the library grows.
@@ -227,7 +228,7 @@ export function DiscoverShowcase() {
             + empty alt keep this pure decoration out of the a11y tree; it
             animates from a clumped to a spread pose on scroll into view. */}
         <img
-          src="/landing/discover-card-1.webp"
+          src={withBasePath('/landing/discover-card-1.webp')}
           alt=""
           aria-hidden="true"
           {...stylex.props(
@@ -236,7 +237,7 @@ export function DiscoverShowcase() {
           )}
         />
         <img
-          src="/landing/discover-card-3.webp"
+          src={withBasePath('/landing/discover-card-3.webp')}
           alt=""
           aria-hidden="true"
           {...stylex.props(
@@ -245,7 +246,7 @@ export function DiscoverShowcase() {
           )}
         />
         <img
-          src="/landing/discover-card-2.webp"
+          src={withBasePath('/landing/discover-card-2.webp')}
           alt=""
           aria-hidden="true"
           {...stylex.props(
@@ -254,7 +255,7 @@ export function DiscoverShowcase() {
           )}
         />
         <img
-          src="/landing/discover-card-4.webp"
+          src={withBasePath('/landing/discover-card-4.webp')}
           alt=""
           aria-hidden="true"
           {...stylex.props(

@@ -14,7 +14,12 @@ const appRoot = join(fileURLToPath(new URL('.', import.meta.url)), '..');
 const htmlPath = join(appRoot, '.next/server/app/templates.html');
 const chunksRoot = join(appRoot, '.next/static/chunks');
 const html = readFileSync(htmlPath, 'utf8');
-const chunkPattern = /<script[^>]+src="\/_next\/static\/chunks\/([^"?]+\.js)/g;
+// The site may be built under a path prefix (NEXT_PUBLIC_BASE_PATH).
+const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || '').replace(/[.*+?^${}()|[\]\\/]/g, '\\$&');
+const chunkPattern = new RegExp(
+  `<script[^>]+src="${basePath}\\/_next\\/static\\/chunks\\/([^"?]+\\.js)`,
+  'g',
+);
 const chunkPaths = [
   ...new Set([...html.matchAll(chunkPattern)].map(match => match[1])),
 ];

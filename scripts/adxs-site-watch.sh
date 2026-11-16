@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ADX-System fork: keep the docsite (tailnet :8458) in step with the merged code and the UI ledger.
+# ADX-System fork: keep the docsite (served at /adxs-ui beside DIP, tailnet :8457) in step with the merged code and the UI ledger.
 # Runs from systemd timer adxs-site-watch.timer. The site builds from its own checkouts under ~/opt/adxs-site, never from
 # a working copy someone is editing:
 #   ~/opt/adxs-site/astryx   = this fork at origin/main        ~/opt/adxs-site/adxs-ui = ADX-System/adxs-ui at origin/v1-react

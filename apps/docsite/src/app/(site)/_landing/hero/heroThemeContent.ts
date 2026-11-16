@@ -17,6 +17,7 @@ import {themeObjects} from '@/generated/themeRegistry';
 // CSS and skips runtime injection. BRAND_BLUE (logo-only) lives in @/constants.
 import {astryxTheme} from '@/themes/astryx';
 import {BRAND_BLUE} from '@/constants';
+import {withBasePath} from '../../../../lib/basePath.mjs';
 
 // Sentinel for the docsite's local brand theme (not an @astryxdesign/theme-* package).
 const ASTRYX = 'astryx';
@@ -104,18 +105,18 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
     // Product photos reuse the Neutral theme's image set (watch / headphones /
     // backpack) now that Neutral is no longer a standalone reel slide.
     product: {
-      image: '/landing/hero/neutral-watch.webp',
+      image: withBasePath('/landing/hero/neutral-watch.webp'),
       title: 'Minimalist watch',
       description: 'Clean design, everyday durability.',
       price: '$240',
     },
     feature: {
-      image: '/landing/hero/neutral-headphones.webp',
+      image: withBasePath('/landing/hero/neutral-headphones.webp'),
       title: 'Wireless headphones',
       price: '$180',
     },
     mini: {
-      image: '/landing/hero/neutral-backpack.webp',
+      image: withBasePath('/landing/hero/neutral-backpack.webp'),
       title: 'Canvas backpack',
       description: 'Water-resistant.',
     },
@@ -130,18 +131,18 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   },
   '@astryxdesign/theme-neutral': {
     product: {
-      image: '/landing/hero/neutral-watch.webp',
+      image: withBasePath('/landing/hero/neutral-watch.webp'),
       title: 'Minimalist watch',
       description: 'Clean design, everyday durability.',
       price: '$240',
     },
     feature: {
-      image: '/landing/hero/neutral-headphones.webp',
+      image: withBasePath('/landing/hero/neutral-headphones.webp'),
       title: 'Wireless headphones',
       price: '$180',
     },
     mini: {
-      image: '/landing/hero/neutral-backpack.webp',
+      image: withBasePath('/landing/hero/neutral-backpack.webp'),
       title: 'Canvas backpack',
       description: 'Water-resistant.',
     },
@@ -156,18 +157,18 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   },
   '@astryxdesign/theme-butter': {
     product: {
-      image: '/landing/hero/butter-watch.webp',
+      image: withBasePath('/landing/hero/butter-watch.webp'),
       title: 'Butter croissant',
       description: 'Flaky, laminated layers baked golden each morning.',
       price: '$6',
     },
     feature: {
-      image: '/landing/hero/butter-backpack.webp',
+      image: withBasePath('/landing/hero/butter-backpack.webp'),
       title: 'Belgian waffle',
       price: '$8',
     },
     mini: {
-      image: '/landing/hero/butter-headphones.webp',
+      image: withBasePath('/landing/hero/butter-headphones.webp'),
       title: 'Pancakes',
       description: 'Stacked tall with melting butter.',
     },
@@ -177,18 +178,18 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   },
   '@astryxdesign/theme-matcha': {
     product: {
-      image: '/landing/hero/matcha-watch.webp',
+      image: withBasePath('/landing/hero/matcha-watch.webp'),
       title: 'Matcha',
       description: 'Stone-ground ceremonial matcha over cold milk.',
       price: '$6',
     },
     feature: {
-      image: '/landing/hero/matcha-headphones.webp',
+      image: withBasePath('/landing/hero/matcha-headphones.webp'),
       title: 'Strawberry matcha',
       price: '$7',
     },
     mini: {
-      image: '/landing/hero/matcha-tumbler.webp',
+      image: withBasePath('/landing/hero/matcha-tumbler.webp'),
       title: 'Ube matcha',
       description: 'Ube and cream matcha.',
     },
@@ -203,18 +204,18 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   },
   '@astryxdesign/theme-gothic': {
     product: {
-      image: '/landing/hero/gothic-watch.webp',
+      image: withBasePath('/landing/hero/gothic-watch.webp'),
       title: 'Sea holly',
       description: 'A single preserved thistle stem with a steely bloom.',
       price: '$24',
     },
     feature: {
-      image: '/landing/hero/gothic-headphones.webp',
+      image: withBasePath('/landing/hero/gothic-headphones.webp'),
       title: 'Garden rose',
       price: '$18',
     },
     mini: {
-      image: '/landing/hero/gothic-backpack.webp',
+      image: withBasePath('/landing/hero/gothic-backpack.webp'),
       title: 'Ranunculus',
       description: 'Layered petals in a soft mauve.',
     },
@@ -224,18 +225,18 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
   },
   '@astryxdesign/theme-y2k': {
     product: {
-      image: '/landing/hero/y2k-watch.webp',
+      image: withBasePath('/landing/hero/y2k-watch.webp'),
       title: 'Phone',
       description: 'Iridescent clamshell with a rainbow screen.',
       price: '$18',
     },
     feature: {
-      image: '/landing/hero/y2k-headphones.webp',
+      image: withBasePath('/landing/hero/y2k-headphones.webp'),
       title: 'Glow star set',
       price: '$12',
     },
     mini: {
-      image: '/landing/hero/y2k-backpack.webp',
+      image: withBasePath('/landing/hero/y2k-backpack.webp'),
       title: 'Butterfly',
       description: 'Sparkly stick-on in pastel chrome.',
     },
@@ -248,7 +249,7 @@ const CONTENT_BY_THEME: Record<string, HeroThemeContent> = {
 // Fallback content for any theme without a bespoke entry (uses its preview img).
 function fallbackContent(name: string): HeroThemeContent {
   const slug = name.replace('@astryxdesign/theme-', '');
-  const image = `/theme-${slug}-preview.png`;
+  const image = withBasePath(`/theme-${slug}-preview.png`);
   return {
     product: {
       image,

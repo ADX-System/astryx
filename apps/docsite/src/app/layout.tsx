@@ -22,6 +22,7 @@ import {
   SITE_TITLE,
   SITE_DESCRIPTION,
 } from '../lib/siteConfig';
+import {withBasePath} from '../lib/basePath.mjs';
 
 // Note: the Astryx theme (src/themes/astryxTheme.ts) is Figtree-first.
 // We can't use next/font/google here (it requires SWC, but this app pins
@@ -33,7 +34,7 @@ import {
 // Default social card image: the launch banner that the announcement blog post
 // uses for its cover. Reusing the same branded banner keeps the shared-link
 // preview consistent with the launch creative across the site and the post.
-const OG_IMAGE = '/images/Astryx-Banner.png';
+const OG_IMAGE = withBasePath('/images/Astryx-Banner.png');
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -45,11 +46,11 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
   icons: {
-    icon: '/favicon.svg',
+    icon: withBasePath('/favicon.svg'),
   },
   alternates: {
     types: {
-      'application/rss+xml': '/rss.xml',
+      'application/rss+xml': withBasePath('/rss.xml'),
     },
   },
   verification: {
@@ -98,8 +99,14 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         />
       </head>
       <body>
-        <Analytics />
-        <SpeedInsights />
+        {/* Vercel serves these scripts; elsewhere they would 404 (and, under a
+            path prefix, land on whatever app owns the origin's root). */}
+        {process.env.VERCEL ? (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        ) : null}
         <Providers>
           <InternalDocsReachabilityProvider>
             {children}
