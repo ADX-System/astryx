@@ -16,6 +16,7 @@ if [[ "${1:-}" == "--full" ]]; then pnpm install && pnpm build; fi
 node scripts/sync-adxs-ui.mjs "$UI"                             # snapshot -> packages/adxs-ui
 pnpm install --no-frozen-lockfile >/dev/null
 # our components add ShadCN registry routes; on this fork refreshing the reviewed lock is expected
+rm -f apps/docsite/tsconfig.tsbuildinfo                          # a failed build leaves a stale type cache that fails the next build
 (cd apps/docsite && UPDATE_SHADCN_ROUTE_LOCK=1 pnpm build)      # pages are generated at build time
 systemctl --user restart adxs-ui-site.service
 for i in $(seq 1 60); do curl -sf -o /dev/null "http://127.0.0.1:8118${NEXT_PUBLIC_BASE_PATH}/" && { echo "site up (${NEXT_PUBLIC_BASE_PATH:-/})"; exit 0; }; sleep 1; done
